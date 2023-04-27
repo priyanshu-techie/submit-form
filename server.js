@@ -21,7 +21,12 @@ app.get('/',(req,res)=>{
     res.sendFile('index.html');
 })
 app.get('/success',(req,res)=>{
-    res.sendFile('submitSuccess.html');
+    let params={
+        name:req.query.name,
+        phone:req.query.phone,
+        email:req.query.email
+    }
+    res.render('submitSuccess.ejs',params);
 })
 
 app.get('/users',async(req,res)=>{
@@ -39,12 +44,13 @@ app.post('/formSubmit',async(req,res)=>{
         console.log(e);
     }
     
-    res.redirect("/success");
+    res.redirect(`/success?name=${req.body.name}&phone=${req.body.phone}&email=${req.body.email}`);
 })
 
 app.listen(8000,()=>{
     console.log('server running at localhost:8000');
 })
 
-// ejs use kr ke submitted data ko show kro submit success page me 
+// make the form beautiful, revise css
+// ejs wala ko github me uplod
 // aisa implementation kro ki jb phone number 10 digits se jyada ho to error show kre user ko, and do it from the backend side not the fronend 
