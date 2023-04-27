@@ -53,4 +53,5 @@ app.listen(8000,()=>{
 
 // make the form beautiful, revise css
 // ejs wala ko github me uplod
+// in all users using ejs show the data in more beautiful way
 // aisa implementation kro ki jb phone number 10 digits se jyada ho to error show kre user ko, and do it from the backend side not the fronend 
