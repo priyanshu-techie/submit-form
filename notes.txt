@@ -1,0 +1,9 @@
+this is how a form is made
+
+you put the things in the form tag to see the magic
+
+you use input tags and use a submit button at last for sending the form inputted data 
+
+if you dont specify the method, it will take it as 'get' and put the data in the url as query string
+
+if you dont specify the action(i.e which route to take) it will take '/' 
