@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .dataBlock{
+            border: 3px solid black;
+            margin: 2rem;
+            background-color: rgb(229, 229, 190);
+        }
+    </style>
+</head>
+<body>
+    <h1>Registed user Data</h1>
+
+    <%userRecord.forEach((e)=>{ %>
+        <div class="dataBlock">
+            <b>Name: </b><%=e.name %> <br>
+            <b>Phone Number: </b><%= e.phoneNumber%> <br>
+            <b>Email: </b><%=e.email %> <br>     
+        </div>
+    <%})%>
+</body>
+</html>

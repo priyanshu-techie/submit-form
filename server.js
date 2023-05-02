@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app=express();
 app.use(express.static(__dirname+'/public'));
-app.use(urlencoded({extended:true}));
+app.use(urlencoded({extended:false}));
 app.set('view engine','ejs')
 
 
@@ -31,19 +31,24 @@ app.get('/success',(req,res)=>{
 
 app.get('/users',async(req,res)=>{
     let data=await users.find({}).select({name:1,phoneNumber:1,email:1,_id:0});
-    res.json(data); 
-})// will this make the page load slow ?? 
+    let userData={
+        userRecord:data
+    }
+    // ejs didn't liked having an array as input 
+    // no problem, I made an Object and passed it to ejs
+
+    res.render('userDetails.ejs', userData);
+})
+
 
 
 app.post('/formSubmit',async(req,res)=>{
-    console.log(req.body);
-    try{
-        await users.create({name:req.body.name,phoneNumber:req.body.phone,email:req.body.email})
-    }
-    catch(e){
-        console.log(e);
-    }
-    
+        try{
+            await users.create({name:req.body.name.toLowerCase(),phoneNumber:req.body.phone,email:req.body.email})
+        }
+        catch(e){
+            console.log(e);
+        }
     res.redirect(`/success?name=${req.body.name}&phone=${req.body.phone}&email=${req.body.email}`);
 })
 
@@ -51,7 +56,5 @@ app.listen(8000,()=>{
     console.log('server running at localhost:8000');
 })
 
-// make the form beautiful, revise css
-// ejs wala ko github me uplod
-// in all users using ejs show the data in more beautiful way
-// aisa implementation kro ki jb phone number 10 digits se jyada ho to error show kre user ko, and do it from the backend side not the fronend 
+// make a condition in which if the user already exist then send the info to the user and dont subit the data
+// current problem nothing is working

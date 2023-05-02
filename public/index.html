@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
-        <form method="post" action="/formSubmit">
+        <form method="post" action="/formSubmit" onsubmit="checkData(event)">
             <h1>Contact Form </h1>
-            <input type="text" name="name" placeholder="Name" id="name">
-            <input type="number" name="phone" id="phoneNum" placeholder="Phone Number">
-            <input type="email" name="email" id="email" placeholder="Email address">
-            <input type="submit" value="Submit">
+            <div class="inpSection">
+                <input type="text" required name="name" placeholder="Name" id="name">
+                <input type="tel" required name="phone" id="phoneNum" placeholder="Phone Number">
+                <input type="email" required name="email" id="email" placeholder="Email address">
+                <input type="submit" value="Submit" id="subButton">
+            </div>
             <!-- this is how a form is made
             you put the things in the form tag to see the magic
             you use input tags and use a submit button at last for sending the form inputted data 
@@ -22,4 +27,8 @@
         </form>
     </main>
 </body>
+
 </html>
+<!-- if user already exist, make a popup that will show the message that the user already exists 
+have a close button int he popup to close it 
+use css to have display none in it and using that show the message. -->
